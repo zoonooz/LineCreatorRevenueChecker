@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Line Creator Revenue Checker",
+  "version": "0.1",
+  "description": "Chrome extension that show today and current month revenue without accessing to creator portal",
+  "icons": { 
+    "128": "icon_128.png" 
+  },
+  "author": "Amornchai Kanokpullwad @zoonref",
+  "background": {
+    "persistent": false,
+    "page": "background.html"
+  },
+  "permissions": [
+    "https://creator.line.me/", 
+    "https://channel.line.naver.jp/"
+  ],
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "icon_19.png",
+    "default_popup": "popup.html"
+  }
+}
