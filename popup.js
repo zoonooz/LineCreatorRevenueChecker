@@ -2,8 +2,29 @@
 // Use of this source code is governed by a GNU V2 license that can be
 // found in the LICENSE file.
 
+var currencyURL = "http://rate-exchange.appspot.com/currency"
 var lineCreatorUrl = "https://creator.line.me"
 var checkLoginUrl = "https://creator.line.me/signup/line_auth"
+
+var currencyService = {
+
+  // function for convert JPY to user currency
+  convertJPY: function(to, amount, period) {
+    var req = new XMLHttpRequest();
+    req.period = period
+    req.open("GET", currencyURL + "?from=JPY&to=" + to + "&q=" + amount, true);
+    req.onload = this.convertJPYHandler_.bind(this);
+    req.send(null);
+  },
+  convertJPYHandler_: function(e) {
+    var response = e.target.response;
+    var responseJson = JSON.parse(response);
+
+    console.log(e.target.period + " revenue in thai = " 
+      + responseJson.v.toFixed(2));
+  }
+
+}
 
 var lineService = {
 
@@ -58,7 +79,7 @@ var lineService = {
     // today revenue
     var todayRevenue = 0;
     if (totalTag) {
-      todayRevenue = totalTag.innerHTML.split("&nbsp;")[1];
+      todayRevenue = parseInt(totalTag.innerHTML.split("&nbsp;")[1]);
     }
 
     // month revenue
@@ -71,6 +92,10 @@ var lineService = {
 
     console.log("today revenue = " + todayRevenue);
     console.log("this month revenue = " + monthRevenue);
+
+    // convert currency
+    currencyService.convertJPY("THB", todayRevenue, "today");
+    currencyService.convertJPY("THB", monthRevenue, "month");
   }
 
 }
