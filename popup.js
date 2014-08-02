@@ -19,9 +19,9 @@ var currencyService = {
   convertJPYHandler_: function(e) {
     var response = e.target.response;
     var responseJson = JSON.parse(response);
-
-    console.log(e.target.period + " revenue in thai = " 
-      + responseJson.v.toFixed(2));
+    var revenue = responseJson.v.toFixed(0);
+    console.log(e.target.period + " revenue in thai = " + revenue);
+    document.getElementById(e.target.period + "Cur").innerHTML = revenue;
   }
 
 }
@@ -57,7 +57,8 @@ var lineService = {
       // unexpected error if reached here
 
     } else {
-      // show login form
+      // open login tab
+      chrome.tabs.create({url: checkLoginUrl});
     }
   },
 
@@ -92,6 +93,8 @@ var lineService = {
 
     console.log("today revenue = " + todayRevenue);
     console.log("this month revenue = " + monthRevenue);
+    document.getElementById("todayJPY").innerHTML = todayRevenue;
+    document.getElementById("monthJPY").innerHTML = monthRevenue;
 
     // convert currency
     currencyService.convertJPY("THB", todayRevenue, "today");

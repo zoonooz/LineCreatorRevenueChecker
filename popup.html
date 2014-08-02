@@ -3,13 +3,67 @@
   <title>Line Creator Sticker Revenue Checker</title>
   <style>
     body {
-      min-width: 357px;
+      width: 357px;
       overflow-x: hidden;
+      padding: 0px; margin: 0px;
+      background-color: #0bb203;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .light-green {
+      color: #82D838;
+    }
+    .dark-green {
+      color: #11720D;
+    }
+    .align-center {
+      width: 100%;
+      text-align: center;
+    }
+    .align-right {
+      text-align: right;
+      margin-right: 15px;
     }
   </style>
   <script src="popup.js"></script>
 </head>
 <body>
+  <div id="revenue-container">
+    <div>
+      <img src="logo.png" style="margin: 15px;">
+      <img src="setting.png" style="margin: 15px; float: right;">
 
+      <!-- Today Revenue -->
+      <p class="light-green align-center" style="font-size: 24px;margin-top: 0px;">
+        Today Revenue
+      </p>
+      <p class="align-center" style="margin-top: -5px;">
+        <strong>
+          <span id="todayCur" style="font-size: 55px;">0</span>
+          THB
+        </strong>
+      </p>
+      <p class="align-center dark-green" style="margin-top: -5px;">
+        <strong>
+          <span id="todayJPY" style="font-size: 24px;">0</span>
+          JPY
+        </strong>
+      </p>
+
+      <!-- Month Revenue -->
+      <div>
+        <div style="float:left;margin-top: 0px;">
+          <p class="light-green" style="font-size: 16px;margin: 15px;">
+            This month Revenue
+          </p>
+        </div>
+        <div style="float:right;font-weight: bold;font-size:14px;">
+          <p class="align-right" style="margin-bottom: -10px;"><span id="monthJPY">0</span> THB</p>
+          <p class="align-right dark-green"><span id="monthCur">0</span> JPY</p>
+        </div>
+      </div>
+    </div>
+    <a href=""><img src="ads.png"></a>
+  </div>
 </body>
 </html>
