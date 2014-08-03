@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Line Creator Revenue Checker",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Chrome extension that show today and current month revenue without accessing to creator portal",
   "icons": { 
     "128": "icon_128.png" 
@@ -12,6 +12,7 @@
     "page": "background.html"
   },
   "permissions": [
+    "storage",
     "https://creator.line.me/", 
     "https://channel.line.naver.jp/",
     "http://rate-exchange.appspot.com/"
@@ -20,5 +21,6 @@
     "default_title": "",
     "default_icon": "icon_19.png",
     "default_popup": "popup.html"
-  }
+  },
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

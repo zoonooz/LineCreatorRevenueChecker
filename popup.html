@@ -2,9 +2,13 @@
 <head>
   <title>Line Creator Sticker Revenue Checker</title>
   <style>
+    html {
+      height: auto;
+    }
     body {
       width: 357px;
-      overflow-x: hidden;
+      height: auto;
+      overflow: hidden;
       padding: 0px; margin: 0px;
       background-color: #0bb203;
       color: white;
@@ -24,6 +28,15 @@
       text-align: right;
       margin-right: 15px;
     }
+    select {
+      border: 0 none;
+      color: #FFFFFF;
+      height: 30px;
+      font-weight: bold;
+      background: transparent;
+      outline: none;
+      background-color: #11720D;
+    }
   </style>
   <script src="popup.js"></script>
 </head>
@@ -31,7 +44,16 @@
   <div id="revenue-container">
     <div>
       <img src="logo.png" style="margin: 15px;">
-      <img src="setting.png" style="margin: 15px; float: right;">
+      <img id="loading" src="loading.gif" 
+      style="display: none; position: absolute; top: 14px; left: 250px">
+      <select id="cur-select" style="margin: 15px; float: right;">
+        <option value="JPY">JPY</option>
+        <option value="THB">THB</option>
+        <option value="CNY">CNY</option>
+        <option value="USD">USD</option>
+        <option value="IDR">IDR</option>
+      </select>
+      <!-- <img src="setting.png" style="margin: 15px; float: right;"> -->
 
       <!-- Today Revenue -->
       <p class="light-green align-center" style="font-size: 24px;margin-top: 0px;">
@@ -39,13 +61,13 @@
       </p>
       <p class="align-center" style="margin-top: -5px;">
         <strong>
-          <span id="todayCur" style="font-size: 55px;">0</span>
-          THB
+          <span id="todayCur" style="font-size: 55px;">-</span>
+          <span id="todayCur-unit">THB</span>
         </strong>
       </p>
-      <p class="align-center dark-green" style="margin-top: -5px;">
+      <p id="today-sub" class="align-center dark-green" style="margin-top: -5px;">
         <strong>
-          <span id="todayJPY" style="font-size: 24px;">0</span>
+          <span id="todayJPY" style="font-size: 24px;">-</span>
           JPY
         </strong>
       </p>
@@ -58,12 +80,14 @@
           </p>
         </div>
         <div style="float:right;font-weight: bold;font-size:14px;">
-          <p class="align-right" style="margin-bottom: -10px;"><span id="monthJPY">0</span> THB</p>
-          <p class="align-right dark-green"><span id="monthCur">0</span> JPY</p>
+          <p class="align-right" style="margin-bottom: -10px;"><span id="monthCur">-</span> 
+            <span id="monthCur-unit">THB</span>
+          </p>
+          <p id="month-sub" class="align-right dark-green"><span id="monthJPY">-</span> JPY</p>
         </div>
       </div>
     </div>
-    <a href=""><img src="ads.png"></a>
+    <a id="ads" href="#"><img src="ads.png"></a>
   </div>
 </body>
 </html>
