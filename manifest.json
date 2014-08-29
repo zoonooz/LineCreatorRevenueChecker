@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Line Creator Revenue Checker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Chrome extension that show today and current month revenue without accessing to creator portal",
   "icons": { 
     "128": "icon_128.png" 

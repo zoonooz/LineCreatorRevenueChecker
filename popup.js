@@ -85,14 +85,14 @@ var lineService = {
     // today revenue
     var todayRevenue = 0;
     if (totalTag) {
-      todayRevenue = parseInt(totalTag.innerHTML.split("&nbsp;")[1]);
+      todayRevenue = parseInt(totalTag.innerHTML.replace(',','').split("&nbsp;")[1]);
     }
 
     // month revenue
     var monthRevenue = 0;
     while (totalTag) {
       var sumOfday = totalTag.innerHTML.split("&nbsp;")[1];
-      monthRevenue += parseInt(sumOfday);
+      monthRevenue += parseInt(sumOfday.replace(',',''));
       totalTag = xPathRes.iterateNext();
     }
 
